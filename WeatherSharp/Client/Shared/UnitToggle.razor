@@ -1,0 +1,8 @@
+﻿<div class="btn-group btn-group-sm toggle-button-group" role="group" aria-label="Basic example">
+    @foreach (var option in AvailableOptions)
+    {
+    <button type="button" class="btn @GetButtonClass(option.Unit) toggle-button" title="@option.DisplayName" @onclick="@(async () => await OnClick(option.Unit))">
+        @option.ShortName
+    </button>
+    }
+</div>

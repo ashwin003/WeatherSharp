@@ -1,0 +1,9 @@
+﻿@page "/"
+
+@inherits BaseComponent
+
+@if(CurrentWeather != null)
+{
+    <WeatherWidget Weather="CurrentWeather"></WeatherWidget>
+}
+

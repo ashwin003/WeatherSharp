@@ -1,0 +1,11 @@
+﻿@page "/favorites"
+@inherits BaseComponent
+
+<BlazoredTypeahead SearchMethod="SearchLocations" @bind-Value="SelectedCity" MinimumLength="3">
+    <SelectedTemplate Context="city">
+        @city.Name (@city.Country)
+    </SelectedTemplate>
+    <ResultTemplate Context="city">
+        @city.Name (@city.Country)
+    </ResultTemplate>
+</BlazoredTypeahead>

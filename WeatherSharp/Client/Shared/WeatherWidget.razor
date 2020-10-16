@@ -1,0 +1,9 @@
+﻿@foreach (var weather in Weather.Weather)
+{
+<figure>
+    <img src="@weather.LargeIconUrl" alt="@weather.Main" title="@weather.Main" />
+    <figcaption>
+        @Weather.MainIndicators.Temperature
+    </figcaption>
+</figure>
+}

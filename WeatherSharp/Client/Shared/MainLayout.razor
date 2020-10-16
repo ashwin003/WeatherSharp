@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+@inject ILocalStorageService localStorageService
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <h4 id="title">Title</h4>
+        <span class="ml-md-auto top-bar-link-container">
+            <UnitToggle AvailableOptions="availableTemperatureScales" OnSelected="onSelected"></UnitToggle>
+            <NavLink class="oi oi-star" href="favorites">
+            </NavLink>
+        </span>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
+@code {
+    IEnumerable<SelectionItem> availableTemperatureScales = WeatherSharp.Shared.Helpers.TempaeratureScaleHelper.GetAvailableTemperatureScales().Select(option => new SelectionItem(option.DisplayName, option.ShortName, option.Unit));
+
+    async void onSelected(Unit selectedTemperatureScale) {
+        await localStorageService.ReplaceItemAsync(Constants.LocalStorage.TemperatureScale, selectedTemperatureScale);
+    }
+}
