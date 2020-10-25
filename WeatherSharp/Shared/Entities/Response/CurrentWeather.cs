@@ -31,6 +31,9 @@ namespace WeatherSharp.Shared.Entities.Response
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
+        [JsonProperty("timezone")]
+        public long Timezone { get; set; }
+
         [JsonProperty("sys")]
         public Sys Sys { get; set; }
 
@@ -44,5 +47,19 @@ namespace WeatherSharp.Shared.Entities.Response
         public string Vod { get; set; }
 
         public Unit Unit { get; set; }
+
+        public IEnumerable<string> DisplayDateTime 
+        {
+            get {
+                var localDate = DateTime.AddSeconds(Timezone);
+                var timeComponent = localDate.ToShortTimeString();
+                var dateComponent = localDate.ToLongDateString();
+
+                return new []{
+                    timeComponent,
+                    dateComponent
+                };
+            }    
+        }
     }
 }

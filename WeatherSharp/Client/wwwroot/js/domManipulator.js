@@ -6,3 +6,7 @@
 function readDocumentTitle() {
     return document.title;
 }
+
+function reload() {
+    location.reload();
+}

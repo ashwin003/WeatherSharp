@@ -10,6 +10,10 @@ namespace WeatherSharp.Client.Extensions
             js.InvokeVoidAsync("updateDocumentTitle", title);
         }
 
+        public static void ReloadPage(this IJSRuntime js) {
+            js.InvokeVoidAsync("reload");
+        }
+
         public static async Task<string> GetDocumentTitle(this IJSRuntime js)
         {
             return await js.InvokeAsync<string>("readDocumentTitle");

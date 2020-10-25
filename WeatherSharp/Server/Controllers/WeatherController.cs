@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using WeatherSharp.Shared;
+using WeatherSharp.Shared.Entities.Request;
 using WeatherSharp.Shared.Entities.Response;
 using WeatherSharp.Shared.ServiceInterfaces;
 
@@ -24,14 +21,14 @@ namespace WeatherSharp.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<CurrentWeather> GetCurrentWeather(string city, string state, string country)
+        public async Task<CurrentWeather> GetCurrentWeather(string city, string state, string country, Unit unit = Unit.Standard, string lang = "en")
         {
             if(string.IsNullOrWhiteSpace(state) && string.IsNullOrWhiteSpace(country))
             {
-                return await weatherService.GetCurrentWeatherAsync(city);
+                return await weatherService.GetCurrentWeatherAsync(city, unit, lang);
             }
 
-            return await weatherService.GetCurrentWeatherAsync(city, state, country);
+            return await weatherService.GetCurrentWeatherAsync(city, state, country, unit, lang);
         }
     }
 }

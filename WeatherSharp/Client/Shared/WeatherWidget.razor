@@ -1,9 +1,18 @@
-﻿@foreach (var weather in Weather.Weather)
-{
-<figure>
-    <img src="@weather.LargeIconUrl" alt="@weather.Main" title="@weather.Main" />
-    <figcaption>
-        @Weather.MainIndicators.Temperature
-    </figcaption>
-</figure>
-}
+﻿<section class="weather-container">
+    @foreach (var weather in Weather.Weather)
+    {
+        <figure title="@weather.Main">
+            <img src="@weather.LargeIconUrl" alt="@weather.Main" class="indicator-img" />
+            <figcaption>
+                <small>@weather.Description</small>
+            </figcaption>
+        </figure>
+    }
+    <h2>@Weather.MainIndicators.Temperature.ToDisplayString(Weather.Unit)</h2>
+    @foreach (var displaySection in Weather.DisplayDateTime)
+    {
+        <small>@displaySection</small><br />
+    }
+</section>
+<DonutChart Name="Humidity" Value="Weather.MainIndicators.Humidity"></DonutChart>
+<DonutChart Name="Coudiness" Value="Weather.Cloudiness.Percentage"></DonutChart>

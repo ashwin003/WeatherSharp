@@ -15,6 +15,7 @@ namespace WeatherSharp.Client.Shared
             set;
         }
 
+        [Parameter]
         public Unit SelectedOption
         {
             get;

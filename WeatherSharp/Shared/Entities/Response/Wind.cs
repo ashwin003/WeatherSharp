@@ -11,6 +11,5 @@ namespace WeatherSharp.Shared.Entities.Response
 
         [JsonProperty("deg")]
         public double DirectionInDegrees { get; set; } = 0;
-
     }
 }
