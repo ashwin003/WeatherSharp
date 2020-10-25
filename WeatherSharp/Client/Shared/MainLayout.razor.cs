@@ -10,7 +10,7 @@ using Microsoft.JSInterop;
 
 namespace WeatherSharp.Client.Shared
 {
-    public partial class MainLayout
+    public partial class MainLayout : LayoutComponentBase
     {
         Unit unit = Unit.Standard;
         IEnumerable<SelectionItem> availableTemperatureScales = WeatherSharp.Shared.Helpers.TempaeratureScaleHelper.GetAvailableTemperatureScales().Select(option => new SelectionItem(option.DisplayName, option.ShortName, option.Unit));
