@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using WeatherSharp.Client.Models;
 using WeatherSharp.Shared.Entities.Request;
 using System.Linq;
+using Microsoft.AspNetCore.Components;
+using Blazored.LocalStorage;
+using Microsoft.JSInterop;
 
 namespace WeatherSharp.Client.Shared
 {
@@ -11,6 +14,10 @@ namespace WeatherSharp.Client.Shared
     {
         Unit unit = Unit.Standard;
         IEnumerable<SelectionItem> availableTemperatureScales = WeatherSharp.Shared.Helpers.TempaeratureScaleHelper.GetAvailableTemperatureScales().Select(option => new SelectionItem(option.DisplayName, option.ShortName, option.Unit));
+
+        [Inject] LocalStorageService localStorageService {get;set;}
+
+        [Inject] IJSRuntime js{ get;set; }
 
         protected override async Task OnInitializedAsync()
         {
