@@ -1,11 +1,24 @@
 ﻿@page "/map"
 
 @inherits BaseComponent
+@inject IJSRuntime js
+
+<div id="map" class="map"></div>
+
+<style>
+    #map {
+        min-height: calc(100vh - 75px);
+        height: 100%;
+    }
+</style>
 
 @code {
-
     public MapPage()
     {
         Title = "Map";
+    }
+
+    protected override void OnAfterRender(bool firstRender) {
+        js.DrawMapAsync("map", 37.41, 8.82);
     }
 }

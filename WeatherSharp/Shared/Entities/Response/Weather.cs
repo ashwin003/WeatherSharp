@@ -21,7 +21,7 @@ namespace WeatherSharp.Shared.Entities.Response
         public string IconUrl { 
             get
             {
-                return $"http://openweathermap.org/img/w/{Icon}.png";
+                return $"//openweathermap.org/img/w/{Icon}.png";
             }
         }
 
@@ -29,7 +29,7 @@ namespace WeatherSharp.Shared.Entities.Response
         {
             get
             {
-                return $"http://openweathermap.org/img/wn/{Icon}@2x.png";
+                return $"//openweathermap.org/img/wn/{Icon}@2x.png";
             }
         }
     }

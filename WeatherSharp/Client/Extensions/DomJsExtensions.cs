@@ -18,5 +18,10 @@ namespace WeatherSharp.Client.Extensions
         {
             return await js.InvokeAsync<string>("readDocumentTitle");
         }
+
+        public static void DrawMapAsync(this IJSRuntime js, string targetContainer, double lattitude, double longitude)
+        {
+            js.InvokeVoidAsync("drawMap", targetContainer, lattitude, longitude);
+        }
     }
 }
