@@ -30,9 +30,10 @@ namespace WeatherSharp.Client.Pages
         }
 
         private CurrentWeather CurrentWeather;
-
+        private DailyForecast DailyForecast;
 
         [Inject] private ICurrentWeatherService weatherService { get; set; }
+        [Inject] private IDailyForecastService dailyForecastService { get; set; }
         [Inject] private ILocalStorageService localStorageService { get; set; }
     }
 }

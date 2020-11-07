@@ -26,7 +26,8 @@ namespace WeatherSharp.Server
             services.AddRazorPages();
             services.AddScoped(typeof(IApiService<>), typeof(ApiService<>));
             services.AddScoped<ICitySearcherService, CitySearcherService>();
-            services.AddScoped<ICurrentWeatherService, CurrentWeatherService>();
+            services.AddScoped<ICurrentWeatherService, CurrentWeatherService>()
+                    .AddScoped<IDailyForecastService, DailyForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

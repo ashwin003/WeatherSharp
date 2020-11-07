@@ -27,7 +27,8 @@ namespace WeatherSharp.Client
         {
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<ICitySearcherService, CitySearcherService>();
-            services.AddScoped<ICurrentWeatherService, CurrentWeatherService>();
+            services.AddScoped<ICurrentWeatherService, CurrentWeatherService>()
+                    .AddScoped<IDailyForecastService, DailyForecastService>();
             services.AddBlazoredLocalStorage();
         }
     }

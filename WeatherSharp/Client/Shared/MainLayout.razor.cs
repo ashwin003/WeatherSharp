@@ -15,7 +15,7 @@ namespace WeatherSharp.Client.Shared
         Unit unit = Unit.Standard;
         IEnumerable<SelectionItem> availableTemperatureScales = WeatherSharp.Shared.Helpers.TempaeratureScaleHelper.GetAvailableTemperatureScales().Select(option => new SelectionItem(option.DisplayName, option.ShortName, option.Unit));
 
-        [Inject] LocalStorageService localStorageService {get;set;}
+        [Inject] ILocalStorageService localStorageService {get;set;}
 
         [Inject] IJSRuntime js{ get;set; }
 

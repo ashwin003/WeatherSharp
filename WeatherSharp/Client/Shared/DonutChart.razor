@@ -2,10 +2,11 @@
     <h6>@Name</h6>
     <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
         <g>
-            <title>Layer 1</title>
-            <circle r="@Radius" cy="81" cx="81" stroke-width="8" stroke="#f2f2f2" fill="none" />
-            <circle class="circle_animation" r="@Radius" cy="81" cx="81" stroke-width="8" stroke="@StrokeColor"
-            fill="none" stroke-dasharray="@FilledStroke" stroke-dashoffset="0" />
+            <title>@Name</title>
+            <circle r="@Radius" cy="@Position" cx="@Position" stroke-width="@StrokeWidth" stroke="#f2f2f2" fill="none" />
+            @if(FilledStroke > 0) {
+                 <circle class="circle_animation" r="@Radius" cy="@Position" cx="@Position" stroke-width="@StrokeWidth" stroke="@StrokeColor" fill="none" stroke-dasharray="@FilledStroke" stroke-dashoffset="0" />
+            }
         </g>
     </svg>
 </div>

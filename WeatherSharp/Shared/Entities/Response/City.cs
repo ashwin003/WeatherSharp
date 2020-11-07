@@ -21,6 +21,12 @@ namespace WeatherSharp.Shared.Entities.Response
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("population")]
+        public int Population { get; set; }
+
+        [JsonProperty("timezone")]
+        public long Timezone { get; set; }
+
         public bool IsDefault { get; set; }
     }
 }
