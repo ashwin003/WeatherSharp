@@ -27,7 +27,9 @@ namespace WeatherSharp.Server
             services.AddScoped(typeof(IApiService<>), typeof(ApiService<>));
             services.AddScoped<ICitySearcherService, CitySearcherService>();
             services.AddScoped<ICurrentWeatherService, CurrentWeatherService>()
-                    .AddScoped<IDailyForecastService, DailyForecastService>();
+                    .AddScoped<IDailyForecastService, DailyForecastService>()
+                    .AddScoped<IFiveDayThreeHourForecastService, FiveDayThreeHourForecastService>()
+                    .AddScoped<IOneCallService, OneCallService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,66 +9,66 @@ using WeatherSharp.Shared.ServiceInterfaces;
 
 namespace WeatherSharp.Shared.Services
 {
-    public class DailyForecastService : IDailyForecastService
+    public class FiveDayThreeHourForecastService : IFiveDayThreeHourForecastService
     {
-        private readonly string dailyForecastEndpoint = "forecast/daily";
-        private readonly IApiService<DailyForecast> forecastService;
+        private readonly string forecastEndpoint = "forecast";
+        private readonly IApiService<FiveDayThreeHourForecast> forecastService;
 
-        public DailyForecastService(IApiService<DailyForecast> forecastService)
+        public FiveDayThreeHourForecastService(IApiService<FiveDayThreeHourForecast> forecastService)
         {
             this.forecastService = forecastService;
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(string cityName, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastsAsync(string cityName, int numberOfTimestamps, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters(cityName, unit, numberOfDays, lang);
+            var parameters = PrepareParameters(cityName, unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(string cityName, string stateCode, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastsAsync(string cityName, string stateCode, int numberOfTimestamps, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters($"{cityName},{stateCode}", unit, numberOfDays, lang);
+            var parameters = PrepareParameters($"{cityName},{stateCode}", unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(string cityName, string stateCode, string countryCode, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastsAsync(string cityName, string stateCode, string countryCode, int numberOfTimestamps, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters($"{cityName},{stateCode},{countryCode}", unit, numberOfDays, lang);
+            var parameters = PrepareParameters($"{cityName},{stateCode},{countryCode}", unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(long cityId, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastAsync(long cityId, int numberOfTimestamps = 16, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters(cityId, unit, numberOfDays, lang);
+            var parameters = PrepareParameters(cityId, unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(Coordinate coordinate, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastAsync(Coordinate coordinate, int numberOfTimestamps = 16, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters(coordinate, unit, numberOfDays, lang);
+            var parameters = PrepareParameters(coordinate, unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }
 
-        public async Task<DailyForecast> GetWeatherForecastAsync(long zipCode, string countryCode, int numberOfDays = 16, Unit unit = Unit.Standard, string lang = "en")
+        public async Task<FiveDayThreeHourForecast> GetWeatherForecastAsync(long zipCode, string countryCode, int numberOfTimestamps = 16, Unit unit = Unit.Standard, string lang = "en")
         {
-            var parameters = PrepareParameters(zipCode, countryCode, unit, numberOfDays, lang);
+            var parameters = PrepareParameters(zipCode, countryCode, unit, numberOfTimestamps, lang);
             var payload = new OWPayload();
-            payload.SetParameters(dailyForecastEndpoint, parameters);
+            payload.SetParameters(forecastEndpoint, parameters);
 
             return await forecastService.ProcessRequestAsync(payload);
         }

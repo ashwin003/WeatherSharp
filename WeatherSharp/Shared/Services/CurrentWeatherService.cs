@@ -110,7 +110,7 @@ namespace WeatherSharp.Shared.Services
 
         private IEnumerable<Parameter> PrepareParameters(long zipCode, string countryCode, Unit unit, string lang)
         {
-            if (zipCode == 0 || string.IsNullOrWhiteSpace(countryCode)) throw new ArgumentNullException("CityidRequired");
+            if (zipCode == 0 || string.IsNullOrWhiteSpace(countryCode)) throw new ArgumentNullException("RequiredParameterMissing");
 
             return new[]
             {
